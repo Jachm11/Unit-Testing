@@ -12,20 +12,16 @@ const init_clients = (new_clients) =>{
 const add_client = (client) => {
 
     if (typeof(client.id) !== "number") {
-        throw new Error("Id invalid");
-        
+        throw new Error("Invalid client");    
     } 
     else if (typeof(client.name) !== "string"){
-        throw new Error("Name invalid");
+        throw new Error("Invalid client");
     }
     else if (typeof(client.age) !== "number"){
-        throw new Error("Age invalid");
-
+        throw new Error("Invalid client");
+    }else {
+        clients.push(client)
     }
-
- 
-    
-
 }
 
 
@@ -33,10 +29,8 @@ const remove_client = (id) => {
 
     if(typeof(id) !== "number"){
         throw new Error("Id invalid");
-
     }
 
-   
     for (let i=0; i< clients.length; i++) {
         const current_client = clients[i]
         if(current_client.id === id){
@@ -57,25 +51,17 @@ const consult_client = (id) => {
         throw new Error("Id invalid");
     }
 
-
     let client_found = null;
-
     clients.forEach(client => {
 
         if(client.id === id){
             client_found = client
         }
     });
-
     if (client_found === null) {
         throw new Error("Client not found");
     }
-
     return client_found;
-
-    
-
-
 }
 
 const changeAge = (id, age) => {
@@ -88,9 +74,7 @@ const changeAge = (id, age) => {
         throw new Error("Age invalid");
     }
 
-
     let client_found = null;
-
     clients.forEach((client) => {
 
         if(client.id === id) {
@@ -102,9 +86,7 @@ const changeAge = (id, age) => {
 
     if (client_found === null){
         throw new Error("Client not found")
-
     }
-
     return client_found;
 
 

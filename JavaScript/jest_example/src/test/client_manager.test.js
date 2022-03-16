@@ -40,15 +40,15 @@ beforeEach(() => {
 
 test('Invalid id, name and age type in add_client function should throw a error', () => {
     let client = {id: "108690481", name: 'Freddy', age: 50 }
-    expect(() => add_client(client)).toThrow(Error);
+    expect(() => add_client(client)).toThrow(Error("Invalid client"));
 
 
     client = {id: 108690481, name: 34543, age: 50 }
-    expect(() => add_client(client)).toThrow(Error);
+    expect(() => add_client(client)).toThrow(Error("Invalid client"));
 
 
     client = {id: 108690481, name: 'Freddy', age: "50" }
-    expect(() => add_client(client)).toThrow(Error);
+    expect(() => add_client(client)).toThrow(Error("Invalid client"));
 
  })
 
@@ -56,10 +56,7 @@ test('Invalid id, name and age type in add_client function should throw a error'
  test('Client added successfully', () => {
 
     let client = { id : 122344332, name : "Pedro", age : 35 }
-    expect(() => add_client(client)).not.toThrow(Error);
-
-
-
+    expect(() => add_client(client)).not.toThrow(Error("Invalid client"));
  })
 
 
@@ -71,14 +68,14 @@ test('Invalid id, name and age type in add_client function should throw a error'
 
 
  test('Invalid id type in remove_client function should throw a error', () => {
-    const client = {id: "108690481", name: 'Freddy', age: 50 }
-    expect(() => remove_client(client)).toThrow(Error);
+    const client =  { id: "117790130", name: 'Sebastian', age: 20}
+    expect(() => remove_client(client.id)).toThrow(Error);
  })
 
 
  test('User not found in remove function should throw a error', () => {
 
-    expect(() => remove_client(785434261)).toThrow(Error("User not found")); 
+    expect(() => remove_client(852584563)).toThrow(Error("User not found")); 
 
  })
 
